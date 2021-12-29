@@ -14,7 +14,7 @@ namespace Lab_9_TryCatch
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Вас приветствует калькулятор");
+            Console.WriteLine("Вас приветствует калькулятор!!!");
             char again = 'д';
             while (again == 'д')
             {
@@ -30,38 +30,46 @@ namespace Lab_9_TryCatch
                     Console.WriteLine("Введите второе число");
                     double b = Convert.ToDouble(Console.ReadLine());
 
-                   
-                    if (sign == '*')
+                    if (sign == '/' || sign == '*' || sign == '+' || sign == '-')
                     {
-                        total = a * b;
-                        Console.WriteLine("Результат умножения: " + total);
+                        if (sign == '*')
+                        {
+                            total = a * b;
+                            Console.WriteLine("Результат умножения: " + total);
+                        }
+                        if (sign == '/')
+                        {
+                            total = a / b;
+                            Console.WriteLine("Результат деления: " + total);
+                        }
+                        if (sign == '+')
+                        {
+                            total = a + b;
+                            Console.WriteLine("Результат сложения: " + total);
+                        }
+                        if (sign == '-')
+                        {
+                            total = a - b;
+                            Console.WriteLine("Результат вычитания: " + total);
+                        }
                     }
-                    if (sign == '/')
-                    {
-                        total = a / b;
-                        Console.WriteLine("Результат деления: " + total);
-                    }
-                    if (sign == '+')
-                    {
-                        total = a + b;
-                        Console.WriteLine("Результат сложения: " + total);
-                    }
-                    if (sign == '-')
-                    {
-                        total = a - b;
-                        Console.WriteLine("Результат вычитания: " + total);
-                    }
+                    else Console.WriteLine("Нет операции с указанным символом");
+
+                    Console.WriteLine("Если хотите продолжить нажмите: д " +
+                        "Если нет любой символ и нажмите клавишу Enter");
+                    again = Convert.ToChar(Console.ReadLine());
                 }
-                catch (ArgumentException)
+                catch (FormatException)
                 {
-                    Console.WriteLine("Недопустимый символ");
+                    Console.WriteLine("Входная строка имела не верный формат");
                 }
-                catch (Exception err)
+
+
+                catch (Exception err) //в переменную err помешается инфо о возникшем исключении
                 {
                     Console.WriteLine(err.Message);
                 }
-                Console.WriteLine("Если хотите продолжить нажмите: д. Если нет любой символ и нажмите Enter");
-                again = Convert.ToChar(Console.ReadLine());
+
             }
             Console.ReadKey();
         }
