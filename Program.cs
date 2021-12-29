@@ -15,8 +15,9 @@ namespace Lab_9_TryCatch
         static void Main(string[] args)
         {
             Console.WriteLine("Вас приветствует калькулятор!!!");
-            char again = 'д';
-            while (again == 'д')
+            bool repeat = true;
+              
+            while (repeat)
             {
 
                 double total;
@@ -55,9 +56,7 @@ namespace Lab_9_TryCatch
                     }
                     else Console.WriteLine("Нет операции с указанным символом");
 
-                    Console.WriteLine("Если хотите продолжить нажмите: д " +
-                        "Если нет любой символ и нажмите клавишу Enter");
-                    again = Convert.ToChar(Console.ReadLine());
+ 
                 }
                 catch (FormatException)
                 {
@@ -69,7 +68,14 @@ namespace Lab_9_TryCatch
                 {
                     Console.WriteLine(err.Message);
                 }
-
+                  
+                Console.WriteLine("Если хотите продолжить нажмите: д " +
+                        "Если нет любой символ и нажмите клавишу Enter");
+                    string go = Console.ReadLine();
+                    if (go.ToUpper() != "Д")
+                    {
+                        repeat = false;
+                    }
             }
             Console.ReadKey();
         }
